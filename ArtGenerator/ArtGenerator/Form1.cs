@@ -6,5 +6,10 @@ namespace ArtGenerator
         {
             InitializeComponent();
         }
+
+        private void youClickedMe(object sender, EventArgs e)
+        {
+            outputLabel.Text = "you clicked me";
+        }
     }
 }

@@ -1,0 +1,17 @@
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\bin\Debug\net6.0-windows\ArtGenerator.exe
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\bin\Debug\net6.0-windows\ArtGenerator.deps.json
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\bin\Debug\net6.0-windows\ArtGenerator.runtimeconfig.json
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\bin\Debug\net6.0-windows\ArtGenerator.dll
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\bin\Debug\net6.0-windows\ArtGenerator.pdb
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ArtGenerator.csproj.AssemblyReference.cache
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ArtGenerator.Form1.resources
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ArtGenerator.csproj.GenerateResource.cache
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ArtGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ArtGenerator.AssemblyInfoInputs.cache
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ArtGenerator.AssemblyInfo.cs
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ArtGenerator.csproj.CoreCompileInputs.cache
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ArtGenerator.dll
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\refint\ArtGenerator.dll
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ArtGenerator.pdb
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ArtGenerator.genruntimeconfig.cache
+C:\Users\michael.drake\Source\Repos\hackday2022\ArtGenerator\ArtGenerator\obj\Debug\net6.0-windows\ref\ArtGenerator.dll

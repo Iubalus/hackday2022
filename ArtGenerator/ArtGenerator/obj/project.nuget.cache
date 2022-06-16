@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SIFhkSpm3SSu0iomGCZrrVJLj3sqgkVgZtPRcNZ/9a3ikhfgj1SBVQVdauPFAyaq9yZi/g1v54E8AkF5Fk+QsA==",
+  "dgSpecHash": "2HqpJfBkyjYGjFEpXq0ZfWkr+MTVfYyyfqyPQSDeCLI6+p4iHu9DgS4dt1UGuqcBeDYziC3/iBungCBotubZhw==",
   "success": true,
-  "projectFilePath": "D:\\hackday2022\\ArtGenerator\\ArtGenerator\\ArtGenerator.csproj",
+  "projectFilePath": "C:\\Users\\michael.drake\\Source\\Repos\\hackday2022\\ArtGenerator\\ArtGenerator\\ArtGenerator.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
