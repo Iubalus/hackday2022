@@ -100,10 +100,4 @@ public class InputParser {
         return parameters;
     }
 
-    interface RendererFactory<Renderer extends ImageRenderer<Setting>, Setting extends ImageSettings> {
-        Renderer create();
-
-        Setting setting(ImageSettings base, Map<String, String> rawParameters);
-    }
-
 }

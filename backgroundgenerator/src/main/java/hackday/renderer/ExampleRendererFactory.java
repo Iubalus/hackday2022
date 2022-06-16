@@ -1,11 +1,10 @@
-package hackday.parse;
+package hackday.renderer;
 
-import hackday.renderer.ExampleRenderer;
-import hackday.renderer.ImageSettings;
+import hackday.parse.RendererFactory;
 
 import java.util.Map;
 
-public class ExampleRendererFactory implements InputParser.RendererFactory<ExampleRenderer, ExampleRenderer.R> {
+public class ExampleRendererFactory implements RendererFactory<ExampleRenderer, ExampleRenderer.R> {
 
     public ExampleRenderer create() {
         return new ExampleRenderer();

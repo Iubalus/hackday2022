@@ -74,7 +74,7 @@ public class InputParserTest {
         assertThat(spyFactory.getCapturedParameters().get("b"), is("2"));
     }
 
-    private static class SpyFactory implements InputParser.RendererFactory<ImageRenderer<ImageSettings>, ImageSettings> {
+    private static class SpyFactory implements RendererFactory<ImageRenderer<ImageSettings>, ImageSettings> {
         private Map<String,String> capturedParameters;
         public ImageRenderer<ImageSettings> create() {
             return null;
