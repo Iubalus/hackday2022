@@ -1,8 +1,11 @@
 package hackday.renderer;
 
+import hackday.parse.RendererFactory;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Map;
 
 public class ExampleRenderer implements ImageRenderer<ExampleRenderer.R> {
     public BufferedImage render(R params) {
@@ -53,5 +56,16 @@ public class ExampleRenderer implements ImageRenderer<ExampleRenderer.R> {
                         )),
                 "image"
         );
+    }
+
+    public static class Factory implements RendererFactory<ExampleRenderer, R> {
+
+        public ExampleRenderer create() {
+            return new ExampleRenderer();
+        }
+
+        public R setting(ImageSettings base, Map<String, String> rawParameters) {
+            return new R(base.getWidth(), base.getHeight(), base.getBackground());
+        }
     }
 }

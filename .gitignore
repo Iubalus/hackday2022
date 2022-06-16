@@ -4,12 +4,14 @@ backgroundgenerator/build/*
 backgroundgenerator/gradle/wrapper/*
 backgroundgenerator/image.png
 backgroundgenerator/out/*
+backgroundgenerator/examples/*
 /.vs
 /ArtGenerator/.vs
 /ArtGenerator/ArtGenerator/bin/Debug/net6.0
 /ArtGenerator/ArtGenerator/obj
 /ArtGenerator/ArtGeneratorTest/bin/Debug/net6.0
 /ArtGenerator/ArtGeneratorTest/obj
+
 
 
 

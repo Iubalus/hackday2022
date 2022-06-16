@@ -5,10 +5,11 @@ import hackday.parse.RendererFactory;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Map;
+import java.util.Random;
 
-public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTriangleRenderer.R> {
+public class PrettyCoolTho implements ImageRenderer<PrettyCoolTho.R> {
 
-    public BufferedImage render(SierpinskiTriangleRenderer.R params) {
+    public BufferedImage render(PrettyCoolTho.R params) {
         BufferedImage image = new BufferedImage(
                 params.getWidth(),
                 params.getHeight(),
@@ -21,14 +22,15 @@ public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTrian
         graphics.setColor(params.getColor());
         drawTriangle(graphics, params.getBase(), params.getWidth() / 2, 0);
         final int pointPositionY = (int) (Math.sin(Math.PI / 3.0) * params.base);
-        graphics.setColor(params.getColor());
+        System.out.println(pointPositionY);
+        graphics.setColor(Color.BLUE);
 
-        drawInvertedTriangle(
+        thatKindaCoolTho(
                 graphics,
                 params.getBase() / 2,
                 params.getWidth() / 2,
                 pointPositionY,
-                params.getDepth()
+                15
         );
 //        thatKindaCoolTho(graphics, params.getBase()/2, params.getWidth()/2, pointPositionY, 15);
 
@@ -49,19 +51,38 @@ public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTrian
         );
     }
 
-    private void drawInvertedTriangle(Graphics2D graphics, int base, int x, int y, int depth) {
+
+    private void drawInvertedTriangle(Graphics2D graphics, int base, int x, int y, int depth, int sanity) {
+        if (depth <= 0 || base == 0 || sanity == 0) {
+            return;
+        }
+        int o = (int) (Math.sin(Math.PI / 3.0) * base);
+        int a = base / 2;
+        graphics.setColor(Color.ORANGE);
+
+        Random random = new Random();
+        graphics.drawLine(x + random.nextInt(base), y+ random.nextInt(base), x - a+ random.nextInt(base), y - o+ random.nextInt(base));
+        graphics.drawLine(x+ random.nextInt(base), y+ random.nextInt(base), x + a+ random.nextInt(base), y - o+ random.nextInt(base));
+        graphics.drawLine(x - a+ random.nextInt(base), y - o+ random.nextInt(base), x + a+ random.nextInt(base), y - o+ random.nextInt(base));
+        drawInvertedTriangle(graphics, base / 2+ random.nextInt(base), x - (base / 2)+ random.nextInt(base), y, depth - random.nextInt(2), sanity - 1);
+        drawInvertedTriangle(graphics, base / 2+ random.nextInt(base), x + (base / 2)+ random.nextInt(base), y+ random.nextInt(base), depth - random.nextInt(2), sanity - 1);
+        drawInvertedTriangle(graphics, base / 2+ random.nextInt(base), x+ random.nextInt(base), y - o+ random.nextInt(base), depth - random.nextInt(2), sanity - 1);
+    }
+
+    private void thatKindaCoolTho(Graphics2D graphics, int base, int x, int y, int depth) {
         if (depth == 0) {
             return;
         }
         int o = (int) (Math.sin(Math.PI / 3.0) * base);
         int a = base / 2;
-
+        graphics.setColor(Color.ORANGE);
+        graphics.setColor(Color.BLUE);
         graphics.drawLine(x, y, x - a, y - o);
-        graphics.drawLine(x, y, x + a, y - o);
         graphics.drawLine(x - a, y - o, x + a, y - o);
-        drawInvertedTriangle(graphics, base / 2, x - (base / 2), y, depth - 1);
-        drawInvertedTriangle(graphics, base / 2, x + (base / 2), y, depth - 1);
-        drawInvertedTriangle(graphics, base / 2, x, y - o, depth - 1);
+        graphics.drawLine(x + a, y, x, y - o);
+        thatKindaCoolTho(graphics, base / 2, x - (base / 2), y, depth - 1);
+        thatKindaCoolTho(graphics, base / 2, x + (base / 2), y, depth - 1);
+        thatKindaCoolTho(graphics, base / 2, x, y - o, depth - 1);
     }
 
     public static class R implements ImageSettings {
@@ -102,9 +123,9 @@ public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTrian
         }
     }
 
-    public static class Factory implements RendererFactory<SierpinskiTriangleRenderer, R> {
-        public SierpinskiTriangleRenderer create() {
-            return new SierpinskiTriangleRenderer();
+    public static class Factory implements RendererFactory<PrettyCoolTho, R> {
+        public PrettyCoolTho create() {
+            return new PrettyCoolTho();
         }
 
         public R setting(
