@@ -1,0 +1,5 @@
+backgroundgenerator/.gradle/*
+backgroundgenerator/.idea/*
+backgroundgenerator/build/*
+backgroundgenerator/gradle/wrapper/*
+backgroundgenerator/image.png
