@@ -25,9 +25,10 @@ public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTrian
                 graphics,
                 params.getBase() / 2,
                 params.getWidth() / 2,
-                pointPositionY
+                pointPositionY,
+                15
         );
-
+//        thatKindaCoolTho(graphics, params.getBase()/2, params.getWidth()/2, pointPositionY, 15);
 
 
         return image;
@@ -38,40 +39,45 @@ public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTrian
         int adjacent = base / 2;
         graphics.drawLine(pointPosX, pointPositionY, pointPosX - adjacent, pointPositionY + opposite);
         graphics.drawLine(pointPosX, pointPositionY, pointPosX + adjacent, pointPositionY + opposite);
-        graphics.drawLine(pointPosX - adjacent, pointPositionY + opposite, pointPosX + adjacent, pointPositionY + opposite);
+        graphics.drawLine(
+                pointPosX - adjacent,
+                pointPositionY + opposite,
+                pointPosX + adjacent,
+                pointPositionY + opposite
+        );
     }
 
 
-    private void drawInvertedTriangle(Graphics2D graphics, int base, int pointPosX, int pointPositionY) {
-        int opposite = (int) (Math.sin(Math.PI / 3.0) * base);
-        int adjacent = base / 2;
-        graphics.drawLine(pointPosX, pointPositionY, pointPosX - adjacent, pointPositionY - opposite);
-        graphics.drawLine(pointPosX, pointPositionY, pointPosX + adjacent, pointPositionY - opposite);
-        graphics.drawLine(pointPosX - adjacent, pointPositionY - opposite, pointPosX + adjacent, pointPositionY - opposite);
+    private void drawInvertedTriangle(Graphics2D graphics, int base, int x, int y, int depth) {
+        if (depth == 0) {
+            return;
+        }
+        int o = (int) (Math.sin(Math.PI / 3.0) * base);
+        int a = base / 2;
+        graphics.setColor(Color.ORANGE);
+
+        graphics.drawLine(x, y, x - a, y - o);
+        graphics.drawLine(x, y, x + a, y - o);
+        graphics.drawLine(x - a, y - o, x + a, y - o);
+        drawInvertedTriangle(graphics, base / 2, x - (base / 2), y, depth - 1);
+        drawInvertedTriangle(graphics, base / 2, x + (base / 2), y, depth - 1);
+        drawInvertedTriangle(graphics, base / 2, x, y - o, depth - 1);
     }
 
-    static class NextIteration{
-        private final int x;
-        private final int y;
-        private final int base;
-
-        NextIteration(int x, int y, int base) {
-            this.x = x;
-            this.y = y;
-            this.base = base;
+    private void thatKindaCoolTho(Graphics2D graphics, int base, int x, int y, int depth) {
+        if (depth == 0) {
+            return;
         }
-
-        public int getX() {
-            return x;
-        }
-
-        public int getY() {
-            return y;
-        }
-
-        public int getBase() {
-            return base;
-        }
+        int o = (int) (Math.sin(Math.PI / 3.0) * base);
+        int a = base / 2;
+        graphics.setColor(Color.ORANGE);
+        graphics.setColor(Color.BLUE);
+        graphics.drawLine(x, y, x - a, y - o);
+        graphics.drawLine(x - a, y - o, x + a, y - o);
+        graphics.drawLine(x + a, y, x, y - o);
+        thatKindaCoolTho(graphics, base / 2, x - (base / 2), y, depth - 1);
+        thatKindaCoolTho(graphics, base / 2, x + (base / 2), y, depth - 1);
+        thatKindaCoolTho(graphics, base / 2, x, y - o, depth - 1);
     }
 
     public static class R implements ImageSettings {
