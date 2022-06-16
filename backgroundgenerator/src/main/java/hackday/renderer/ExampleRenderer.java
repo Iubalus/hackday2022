@@ -13,7 +13,7 @@ public class ExampleRenderer implements ImageRenderer<ExampleRenderer.R>{
         graphics.setColor(params.getBackground());
         graphics.fillRect(0,0, params.getWidth(), params.getHeight());
         graphics.setColor(Color.RED);
-        graphics.drawLine(0,0,100,100);
+        graphics.drawLine(0,0,params.getWidth(),params.getHeight());
         return image;
     }
 

@@ -1,34 +1,28 @@
 package hackday.parse;
 
 
-import java.awt.*;
+import hackday.renderer.ImageRenderer;
+import hackday.renderer.ImageSettings;
+
+import java.awt.image.BufferedImage;
 
 public class Parsed {
-    private int width = 1920;
-    private int height = 1080;
-    private Color backgroundColor = Color.BLACK;
+    private ImageRenderer<ImageSettings> renderer;
+    private ImageSettings settings;
 
-    public int getWidth() {
-        return width;
+    public void setRenderer(ImageRenderer<ImageSettings> renderer) {
+        this.renderer = renderer;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public ImageSettings getSettings() {
+        return settings;
     }
 
-    public int getHeight() {
-        return height;
+    public void setSettings(ImageSettings settings) {
+        this.settings = settings;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public Color getBackgroundColor() {
-        return backgroundColor;
-    }
-
-    public void setBackgroundColor(Color backgroundColor) {
-        this.backgroundColor = backgroundColor;
+    public BufferedImage render(){
+        return renderer.render(settings);
     }
 }
