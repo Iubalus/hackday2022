@@ -1,9 +1,11 @@
 package hackday;
 
-import hackday.renderer.DistortedSierpinskiTriangleRenderer;
-import hackday.renderer.ExampleRenderer;
 import hackday.parse.InputParser;
 import hackday.parse.Parsed;
+import hackday.renderer.DistortedSierpinskiTriangleRenderer;
+import hackday.renderer.ExampleRenderer;
+import hackday.renderer.FadeColorSierpinskiTriangleRenderer;
+import hackday.renderer.FadingSierpinskiTriangleRenderer;
 import hackday.renderer.PrettyCoolTho;
 import hackday.renderer.SierpinskiTriangleRenderer;
 
@@ -19,9 +21,10 @@ public class Main {
         parser.register("sierpinski", new SierpinskiTriangleRenderer.Factory());
         parser.register("disierpinski", new DistortedSierpinskiTriangleRenderer.Factory());
         parser.register("cool_tho", new PrettyCoolTho.Factory());
-
+        parser.register("fade", new FadingSierpinskiTriangleRenderer.Factory());
+        parser.register("fade_color", new FadeColorSierpinskiTriangleRenderer.Factory());
         Parsed parse = parser.parse(
-                "width:10000;height:10000;background:#000000;sierpinski(color:#32F7FA,depth:15,base:7500)");
+                "width:3840;height:2160;background:#000000;fade_color(color:#FFFFFF,depth:15,base:6000,distort:25)");
         BufferedImage image = parse.render();
         ImageIO.write(image, "png", new File("./examples/" + System.currentTimeMillis() + ".png"));
     }
