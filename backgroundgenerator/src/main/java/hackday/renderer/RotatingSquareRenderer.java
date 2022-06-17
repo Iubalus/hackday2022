@@ -5,6 +5,7 @@ import hackday.parse.RendererFactory;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Map;
+import java.util.Random;
 
 public class RotatingSquareRenderer implements ImageRenderer<RotatingSquareRenderer.R> {
     public BufferedImage render(R params) {
@@ -17,10 +18,49 @@ public class RotatingSquareRenderer implements ImageRenderer<RotatingSquareRende
         ImageRendererUtils.renderBackground(params, graphics);
 
         graphics.setColor(params.getColor());
-        int[] xs = {params.getX(), params.getX() + params.getSize(), params.getX() + params.getSize(), params.getX(), params.getX()};
-        int[] ys = {params.getY(), params.getY(), params.getY() + params.getSize(), params.getY() + params.getSize(), params.getY()};
-        graphics.drawPolygon(xs, ys, 5);
+        double[] xs = {params.getX(), params.getX() + params.getSize(), params.getX() + params.getSize(), params.getX(), params.getX()};
+        double[] ys = {params.getY(), params.getY(), params.getY() + params.getSize(), params.getY() + params.getSize(), params.getY()};
+
+        drawPolygon(graphics, xs, ys);
+
+        //Configurables
+        final int cycles = 1500;
+        double angle = Math.PI / 100;
+
+        final Random r = new Random();
+        for (int j = 0; j < cycles; j++) {
+            for (int i = 0; i < xs.length; i++) {
+                xs[i] = rotateX(params.getX(), params.getY(), params.getSize(), xs[i], ys[i], angle);
+                ys[i] = rotateY(params.getX(), params.getY(), params.getSize(), xs[i], ys[i], angle);
+            }
+            graphics.setColor(new Color(
+                    100 + r.nextInt(50),
+                    100 + r.nextInt(125),
+                    100 + r.nextInt(125)
+            ));
+            drawPolygon(graphics, xs, ys);
+        }
         return image;
+    }
+
+    private double rotateX(double xPos, double yPos, double size, double x, double y, double angleRadians) {
+        return (((x - size / 2) - xPos) * Math.cos(angleRadians) - ((y - size / 2) - yPos) * Math.sin(angleRadians)) + xPos + size / 2;
+    }
+
+    private double rotateY(double xPos, double yPos, double size, double x, double y, double angleRadians) {
+        return (((x - size / 2) - xPos) * Math.sin(angleRadians) + ((y - size / 2) - yPos) * Math.cos(angleRadians)) + yPos + size / 2;
+    }
+
+    private void drawPolygon(Graphics2D graphics, double[] xs, double[] ys) {
+        graphics.drawPolygon(toIntArray(xs), toIntArray(ys), xs.length);
+    }
+
+    private int[] toIntArray(double[] source) {
+        int[] target = new int[source.length];
+        for (int i = 0; i < source.length; i++) {
+            target[i] = (int) source[i];
+        }
+        return target;
     }
 
 

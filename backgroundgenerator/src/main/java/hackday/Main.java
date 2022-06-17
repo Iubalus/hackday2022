@@ -25,8 +25,19 @@ public class Main {
         parser.register("fade", new FadingSierpinskiTriangleRenderer.Factory());
         parser.register("fade_color", new FadeColorSierpinskiTriangleRenderer.Factory());
         parser.register("rot_square", new RotatingSquareRenderer.Factory());
+        int w = 3840;
+        int h = 2160;
+        int size = 3000;
         Parsed parse = parser.parse(
-                "width:3840;height:2160;background:#FFFFFF;rot_square(color:#0000FF,size:1000,x:1420,y:580)");
+                String.format(
+                        "width:%d;height:%d;background:#000000;rot_square(color:#0000FF,size:%d,x:%d,y:%d)",
+                        w,
+                        h,
+                        size,
+                        w / 2 - size / 2,
+                        h / 2 - size / 2
+                )
+        );
         BufferedImage image = parse.render();
         ImageIO.write(image, "png", new File("./examples/" + System.currentTimeMillis() + ".png"));
     }
