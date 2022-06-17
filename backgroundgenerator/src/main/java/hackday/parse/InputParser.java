@@ -1,6 +1,5 @@
 package hackday.parse;
 
-import hackday.renderer.ImageRenderer;
 import hackday.renderer.ImageSettings;
 
 import java.awt.*;
@@ -15,7 +14,7 @@ public class InputParser {
         factories.put(name, factory);
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings("unchecked")
     public Parsed parse(String raw) {
         BaseSetting base = new BaseSetting();
         Parsed result = new Parsed();
@@ -40,7 +39,7 @@ public class InputParser {
                 String[] parts = statement.split("\\(");
                 String params = parts[1].substring(0, parts[1].length() - 1);
                 RendererFactory<?, ?> factory = findFactory(parts[0]);
-                result.setRenderer((ImageRenderer<ImageSettings>) factory.create());
+                result.setRenderer(factory.create());
                 result.setSettings(factory.setting(base, toParameterMap(params)));
             }
         }

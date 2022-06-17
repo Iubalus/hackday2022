@@ -19,14 +19,14 @@ public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTrian
         graphics.fillRect(0, 0, params.getWidth(), params.getHeight());
 
         graphics.setColor(params.getColor());
-        drawTriangle(graphics, params.getBase(), params.getWidth() / 2, 0);
+        drawTriangle(graphics, params.getBase(), params.getWidth() / 2.0, 0);
         final int pointPositionY = (int) (Math.sin(Math.PI / 3.0) * params.base);
         graphics.setColor(params.getColor());
 
         drawInvertedTriangle(
                 graphics,
                 params.getBase() / 2,
-                params.getWidth() / 2,
+                params.getWidth() / 2.0,
                 pointPositionY,
                 params.getDepth()
         );
@@ -36,29 +36,29 @@ public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTrian
         return image;
     }
 
-    private void drawTriangle(Graphics2D graphics, int base, int pointPosX, int pointPositionY) {
-        int opposite = (int) (Math.sin(Math.PI / 3.0) * base);
-        int adjacent = base / 2;
-        graphics.drawLine(pointPosX, pointPositionY, pointPosX - adjacent, pointPositionY + opposite);
-        graphics.drawLine(pointPosX, pointPositionY, pointPosX + adjacent, pointPositionY + opposite);
+    private void drawTriangle(Graphics2D graphics, double base, double x, double y) {
+        double opposite = (int) (Math.sin(Math.PI / 3.0) * base);
+        double adjacent = base / 2;
+        graphics.drawLine((int) x, (int) y, (int) (x - adjacent), (int) (y + opposite));
+        graphics.drawLine((int) x, (int) y, (int) (x + adjacent), (int) (y + opposite));
         graphics.drawLine(
-                pointPosX - adjacent,
-                pointPositionY + opposite,
-                pointPosX + adjacent,
-                pointPositionY + opposite
+                (int) (x - adjacent),
+                (int) (y + opposite),
+                (int) (x + adjacent),
+                (int) (y + opposite)
         );
     }
 
-    private void drawInvertedTriangle(Graphics2D graphics, int base, int x, int y, int depth) {
+    private void drawInvertedTriangle(Graphics2D graphics, double base, double x, double y, int depth) {
         if (depth == 0) {
             return;
         }
-        int o = (int) (Math.sin(Math.PI / 3.0) * base);
-        int a = base / 2;
+        double o = (Math.sin(Math.PI / 3.0) * base);
+        double a = base / 2;
 
-        graphics.drawLine(x, y, x - a, y - o);
-        graphics.drawLine(x, y, x + a, y - o);
-        graphics.drawLine(x - a, y - o, x + a, y - o);
+        graphics.drawLine((int) x, (int) y, (int) (x - a), (int) (y - o));
+        graphics.drawLine((int) x, (int) y, (int) (x + a), (int) (y - o));
+        graphics.drawLine((int) (x - a), (int) (y - o), (int) (x + a), (int) (y - o));
         drawInvertedTriangle(graphics, base / 2, x - (base / 2), y, depth - 1);
         drawInvertedTriangle(graphics, base / 2, x + (base / 2), y, depth - 1);
         drawInvertedTriangle(graphics, base / 2, x, y - o, depth - 1);
@@ -68,9 +68,9 @@ public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTrian
         private final ImageSettings baseSettings;
         private final Color color;
         private final int depth;
-        private final int base;
+        private final double base;
 
-        public R(ImageSettings baseSettings, Color color, int depth, int base) {
+        public R(ImageSettings baseSettings, Color color, int depth, double base) {
             this.baseSettings = baseSettings;
             this.color = color;
             this.depth = depth;
@@ -97,7 +97,7 @@ public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTrian
             return depth;
         }
 
-        public int getBase() {
+        public double getBase() {
             return base;
         }
     }
@@ -114,7 +114,7 @@ public class SierpinskiTriangleRenderer implements ImageRenderer<SierpinskiTrian
                     base,
                     Color.decode(rawParameters.get("color")),
                     Integer.parseInt(rawParameters.get("depth")),
-                    Integer.parseInt(rawParameters.get("base"))
+                    Double.parseDouble(rawParameters.get("base"))
             );
         }
     }

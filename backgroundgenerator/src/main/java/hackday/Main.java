@@ -24,7 +24,7 @@ public class Main {
         parser.register("fade", new FadingSierpinskiTriangleRenderer.Factory());
         parser.register("fade_color", new FadeColorSierpinskiTriangleRenderer.Factory());
         Parsed parse = parser.parse(
-                "width:3840;height:2160;background:#000000;fade_color(color:#FFFFFF,depth:15,base:6000,distort:25)");
+                "width:3840;height:2160;background:#FFFFFF;sierpinski(color:#FF0000,depth:15,base:6000,distort:25)");
         BufferedImage image = parse.render();
         ImageIO.write(image, "png", new File("./examples/" + System.currentTimeMillis() + ".png"));
     }
